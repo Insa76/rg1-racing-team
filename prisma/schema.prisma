@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+enum SponsorTier {
+  MAIN
+  TECH
+  PARTNER
+}
+
+model Sponsor {
+  id        Int          @id @default(autoincrement())
+  name      String
+  logoUrl   String
+  website   String?
+  tier      SponsorTier
+  active    Boolean      @default(true)
+  createdAt DateTime     @default(now())
+}
