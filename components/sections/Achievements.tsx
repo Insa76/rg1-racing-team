@@ -17,7 +17,7 @@ export default function Achievements() {
 
         <div className="space-y-10">
           <Reveal delay={0.1}>
-    <Card number="01" title="Títulos" text="Múltiples campeonatos obtenidos en Brasil." />
+    <Card number="01" title="Títulos" text="Quintuple Campeón Argentino 004,2005,2011,2016,2021.TriCampeón Brasilero 2025/2024/2023." />
   </Reveal>
 
   <Reveal delay={0.2}>

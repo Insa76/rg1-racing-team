@@ -11,13 +11,12 @@ export default function Footer() {
             <div className="mb-2">
               
               <Image
-                src="/logo/logo.jpeg"
+                src="/logo/logo.png"
                 alt="RG1 Racing Team"
                 width={120}
                 height={40}
                 priority
               />
-              <p>Ramiro Gandola</p>
               
             </div>
             <p className="max-w-sm">
