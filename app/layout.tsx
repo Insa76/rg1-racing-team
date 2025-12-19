@@ -18,24 +18,13 @@ const inter = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://rg1racingteam.com"), // cambiar cuando tengas dominio
+  metadataBase: new URL("https://rg1racingteam.com"),
   title: {
     default: "RG1 Racing Team | BMW 1000cc",
     template: "%s | RG1 Racing Team",
   },
   description:
     "RG1 Racing Team es un proyecto deportivo profesional de motociclismo de velocidad. Múltiple campeón en Brasil, categoría BMW 1000cc.",
-  keywords: [
-    "RG1 Racing Team",
-    "motociclismo",
-    "BMW 1000cc",
-    "racing team",
-    "campeón brasileño",
-    "motorsport",
-    "sponsors deportivos",
-  ],
-  authors: [{ name: "RG1 Racing Team" }],
-  creator: "RG1 Racing Team",
   openGraph: {
     type: "website",
     locale: "es_AR",
@@ -51,13 +40,6 @@ export const metadata: Metadata = {
         alt: "RG1 Racing Team – BMW 1000cc",
       },
     ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "RG1 Racing Team | BMW 1000cc",
-    description:
-      "Proyecto deportivo profesional de motociclismo de velocidad. Múltiple campeón en Brasil.",
-    images: ["/og/og-image.jpg"],
   },
 };
 

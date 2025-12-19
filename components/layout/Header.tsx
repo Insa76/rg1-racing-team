@@ -7,6 +7,7 @@ import Link from "next/link";
 import clsx from "clsx";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
+import MobileMenu from "./MobileMenu";
 
 const navItems = [
   { label: "Logros", href: "#logros" },

@@ -1,25 +1,11 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import Section from "@/components/ui/Section";
 import Heading from "@/components/ui/Heading";
-
-interface Sponsor {
-  id: number;
-  name: string;
-  logoUrl: string;
-  website?: string;
-  tier: "MAIN" | "TECH" | "PARTNER";
-}
+import { sponsors } from "@/content/sponsors";
 
 export default function Sponsors() {
-  const [sponsors, setSponsors] = useState<Sponsor[]>([]);
-
-  useEffect(() => {
-    fetch("/api/sponsors")
-      .then((res) => res.json())
-      .then(setSponsors);
-  }, []);
+  const activeSponsors = sponsors.filter(
+    (s) => s.active !== false
+  );
 
   return (
     <Section id="sponsors" variant="neutral">
@@ -30,16 +16,16 @@ export default function Sponsors() {
       />
 
       <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
-        {sponsors.map((sponsor) => (
+        {activeSponsors.map((sponsor) => (
           <a
-            key={sponsor.id}
+            key={sponsor.name}
             href={sponsor.website}
             target="_blank"
             rel="noopener noreferrer"
             className="opacity-80 hover:opacity-100 transition"
           >
             <img
-              src={sponsor.logoUrl}
+              src={sponsor.logo}
               alt={sponsor.name}
               className="max-h-16 mx-auto object-contain"
             />
