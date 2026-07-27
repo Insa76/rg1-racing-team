@@ -1,74 +1,60 @@
-// components/ui/Card.tsx
+"use client";
 
+import { ReactNode } from "react";
 import clsx from "clsx";
-import Link from "next/link";
-
-interface CardCTA {
-  label: string;
-  href: string;
-}
 
 interface CardProps {
-  number?: string;
-  title: string;
-  text?: string;
-  image?: string;
-  cta?: CardCTA;
-  variant?: "default" | "outlined";
+  children: ReactNode;
   className?: string;
+  hover?: boolean;
+  glow?: boolean;
 }
 
 export default function Card({
-  number,
-  title,
-  text,
-  image,
-  cta,
-  variant = "default",
+  children,
   className,
+  hover = true,
+  glow = false,
 }: CardProps) {
   return (
     <div
       className={clsx(
-        "flex gap-6",
-        variant === "outlined" &&
-          "border border-neutral-700 rounded-xl p-6",
+        "group relative overflow-hidden rounded-3xl",
+        "border border-white/10",
+        "bg-white/[0.03]",
+        "backdrop-blur-xl",
+        "shadow-[0_20px_80px_rgba(0,0,0,0.35)]",
+        hover &&
+          "transition-all duration-500 hover:-translate-y-2 hover:border-primary/40 hover:shadow-[0_30px_90px_rgba(0,0,0,0.5)]",
         className
       )}
     >
-      {/* Número */}
-      {number && (
-        <span className="text-4xl font-bold text-neutral-500 min-w-[48px]">
-          {number}
-        </span>
+      {/* Glow */}
+      {glow && (
+        <div
+          className="
+            pointer-events-none
+            absolute
+            -top-24
+            -right-24
+            h-48
+            w-48
+            rounded-full
+            bg-primary/20
+            blur-3xl
+            opacity-0
+            transition-opacity
+            duration-500
+            group-hover:opacity-100
+          "
+        />
       )}
 
-      <div className="space-y-2">
-        {/* Imagen opcional */}
-        {image && (
-          <img
-            src={image}
-            alt={title}
-            className="rounded-lg mb-4 w-full object-cover"
-          />
-        )}
+      {/* Borde superior */}
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-        <h4 className="text-2xl font-semibold">{title}</h4>
-
-        {text && (
-          <p className="text-neutral-400 leading-relaxed">
-            {text}
-          </p>
-        )}
-
-        {cta && (
-          <Link
-            href={cta.href}
-            className="inline-block mt-3 text-sm font-semibold text-white underline underline-offset-4 hover:text-neutral-300 transition"
-          >
-            {cta.label}
-          </Link>
-        )}
+      <div className="relative p-8">
+        {children}
       </div>
     </div>
   );

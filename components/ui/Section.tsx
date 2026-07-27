@@ -6,41 +6,51 @@ import clsx from "clsx";
 interface SectionProps {
   id?: string;
   children: ReactNode;
-  variant?: "dark" | "light" | "neutral" | "none";
-  size?: "sm" | "md" | "lg";
-  fullWidth?: boolean;
   className?: string;
+  size?: "sm" | "md" | "lg" | "hero";
+  fullWidth?: boolean;
 }
 
 export default function Section({
   id,
   children,
-  variant = "dark",
+  className,
   size = "lg",
   fullWidth = false,
-  className,
 }: SectionProps) {
   return (
     <section
-    id={id}
+      id={id}
       className={clsx(
-         "w-full scroll-mt-20",
-        // Fondo
-        variant === "dark" && "bg-neutral-900 text-white",
-        variant === "light" && "bg-white text-neutral-900",
-        variant === "neutral" && "bg-neutral-100 text-neutral-900",
+        "relative w-full scroll-mt-24 overflow-hidden",
 
-        // Padding vertical
-        size === "sm" && "py-12",
-        size === "md" && "py-20",
-        size === "lg" && "py-28",
+        // Espaciado vertical
+        size === "sm" && "py-16 md:py-20",
+        size === "md" && "py-20 md:py-28",
+        size === "lg" && "py-24 md:py-32 lg:py-36",
+
+        // Hero controla su propia altura
+        size === "hero" && "py-0",
 
         className
       )}
     >
-      <div className={clsx(
-        fullWidth ? "px-6" : "container mx-auto px-6"
-      )}>
+      {/* Halo decorativo */}
+      {size !== "hero" && (
+        <div className="pointer-events-none absolute inset-0 -z-10 opacity-40">
+          <div className="absolute left-1/2 top-0 h-96 w-96 -translate-x-1/2 rounded-full bg-primary/5 blur-[140px]" />
+        </div>
+      )}
+
+      {/* Container */}
+      <div
+        className={clsx(
+          "relative",
+          fullWidth
+            ? "w-full"
+            : "mx-auto w-full max-w-7xl px-6 lg:px-8"
+        )}
+      >
         {children}
       </div>
     </section>

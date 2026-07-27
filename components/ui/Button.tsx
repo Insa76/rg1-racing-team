@@ -2,12 +2,13 @@
 
 import clsx from "clsx";
 import Link from "next/link";
-import { ReactNode } from "react";
+import { ButtonHTMLAttributes, ReactNode } from "react";
 
-interface ButtonProps {
+interface ButtonProps
+  extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
   href?: string;
-  variant?: "primary" | "secondary" | "ghost";
+  variant?: "primary" | "secondary" | "outline" | "ghost";
   size?: "sm" | "md" | "lg";
   className?: string;
 }
@@ -18,20 +19,36 @@ export default function Button({
   variant = "primary",
   size = "md",
   className,
+  type = "button",
+  ...props
 }: ButtonProps) {
   const classes = clsx(
-    "inline-flex items-center justify-center font-semibold transition rounded-lg",
-    // Variants
+    "inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-all duration-300",
+
+    // Focus
+    "focus:outline-none focus:ring-2 focus:ring-primary/40",
+
+    // Primary
     variant === "primary" &&
-      "bg-white text-neutral-900 hover:bg-neutral-200",
+      "bg-primary text-white hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/30",
+
+    // Secondary
     variant === "secondary" &&
-      "bg-neutral-800 text-white hover:bg-neutral-700",
+      "bg-secondary text-white hover:opacity-90",
+
+    // Outline
+    variant === "outline" &&
+      "border border-border bg-transparent text-secondary hover:border-primary hover:text-primary",
+
+    // Ghost
     variant === "ghost" &&
-      "bg-transparent text-white hover:text-neutral-300",
+      "bg-transparent text-secondary hover:bg-white/5",
+
     // Sizes
     size === "sm" && "px-4 py-2 text-sm",
     size === "md" && "px-6 py-3",
     size === "lg" && "px-8 py-4 text-lg",
+
     className
   );
 
@@ -43,5 +60,13 @@ export default function Button({
     );
   }
 
-  return <button className={classes}>{children}</button>;
+  return (
+    <button
+      type={type}
+      className={classes}
+      {...props}
+    >
+      {children}
+    </button>
+  );
 }
