@@ -19,7 +19,7 @@ export default function Gallery() {
   const [activeImage, setActiveImage] = useState<string | null>(null);
 
   return (
-    <Section id="galeria" variant="dark">
+    <Section id="galeria" size="lg">
       <Heading
         title="Galería"
         subtitle="En acción"

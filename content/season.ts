@@ -17,7 +17,6 @@ export const season: SeasonData = {
     {
       label: "Position",
       value: "3°",
-      suffix: "°",
     },
     {
       label: "Podiums",
