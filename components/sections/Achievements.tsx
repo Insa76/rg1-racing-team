@@ -17,27 +17,64 @@ export default function Achievements() {
 
         <div className="space-y-10">
           <Reveal delay={0.1}>
-            <Card
-              number="01"
-              title="Títulos"
-              text="Quíntuple Campeón Argentino 2004, 2005, 2011, 2016 y 2021. Tricampeón Brasileño 2023, 2024 y 2025."
-            />
+            <Card>
+              <div className="flex items-start gap-6">
+                <span className="text-sm font-semibold tracking-[0.3em] text-primary">
+                  01
+                </span>
+
+                <div>
+                  <h3 className="font-display text-3xl font-bold uppercase text-white">
+                    Títulos
+                  </h3>
+
+                  <p className="mt-4 leading-7 text-white/50">
+                    Quíntuple Campeón Argentino 2004, 2005, 2011, 2016 y 2021.
+                    Tricampeón Brasileño 2023, 2024 y 2025.
+                  </p>
+                </div>
+              </div>
+            </Card>
           </Reveal>
 
           <Reveal delay={0.2}>
-            <Card
-              number="02"
-              title="Velocidad"
-              text="Dominio absoluto en BMW 1000cc."
-            />
+            <Card>
+              <div className="flex items-start gap-6">
+                <span className="text-sm font-semibold tracking-[0.3em] text-primary">
+                  02
+                </span>
+
+                <div>
+                  <h3 className="font-display text-3xl font-bold uppercase text-white">
+                    Velocidad
+                  </h3>
+
+                  <p className="mt-4 leading-7 text-white/50">
+                    Dominio absoluto en BMW 1000cc.
+                  </p>
+                </div>
+              </div>
+            </Card>
           </Reveal>
 
           <Reveal delay={0.3}>
-            <Card
-              number="03"
-              title="Pasión"
-              text="Mentalidad competitiva y compromiso total."
-            />
+            <Card>
+              <div className="flex items-start gap-6">
+                <span className="text-sm font-semibold tracking-[0.3em] text-primary">
+                  03
+                </span>
+
+                <div>
+                  <h3 className="font-display text-3xl font-bold uppercase text-white">
+                    Pasión
+                  </h3>
+
+                  <p className="mt-4 leading-7 text-white/50">
+                    Mentalidad competitiva y compromiso total.
+                  </p>
+                </div>
+              </div>
+            </Card>
           </Reveal>
         </div>
       </div>
